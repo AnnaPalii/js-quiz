@@ -85,15 +85,21 @@ function questionClick(event) {
     timerEl.innerHTML = time;
     // play "wrong" sound effect
   sfxWrong.play ();
+    // add feedback
+    feedbackEl.removeAttribute("class");
+    feedbackEl.setAttribute("class", "feedback");
+    feedbackEl.textContent ="Wrong!";
   }
   else {
   // else 
     // play "right" sound effect
     sfxRight.play ();
-    // flash right/wrong feedback on page for half a second
-    var feedocument.createElement("<div>You are right</div>");
-    questions.appendChild()
+    // add feedback
+    feedbackEl.removeAttribute("class");
+    feedbackEl.setAttribute("class", "feedback");
+    feedbackEl.textContent ="Correct!";
   }
+
   // move to next question
       questionsIndex ++;
       console.log(questionsIndex);
@@ -121,6 +127,9 @@ function quizEnd() {
 
   // hide questions section
   questionsEl.setAttribute("class","hide");
+
+  // hide feedback section
+   feedbackEl.setAttribute("class","hide");
 }
 
 function saveHighscore() {
