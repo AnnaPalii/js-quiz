@@ -15,6 +15,7 @@ var initialsEl = document.getElementById("initials");
 var feedbackEl = document.getElementById("feedback");
 var endScreen = document.getElementById("end-screen");
 var finalScore = document.getElementById("final-score");
+var highScores = document.getElementById("highscores");
 
 // sound effects
 var sfxRight = new Audio("assets/sfx/correct.wav");
@@ -128,34 +129,49 @@ function quizEnd() {
 // }
 
 function saveHighscore() {
+    // make sure value wasn't empty
+    if (initialsEl.value === "") {
+      alert("Please add you initials to save score");
+    }
+
   // get value of input box
-  
-
-  // make sure value wasn't empty
-  if (initialsEl.value === "") {
-    displayMessage("error", "Please add you initials to save score");
-
-    // get saved scores from localstorage, or if not any, set to empty array
-    var lastScore = JSON.parse(localStorage.getItem("initials"));
-    finalScore.textContent = score;
-
-    // format new score object for current user
-    
-
+  var currentUserscore = {
+    initials: initialsEl.value,
+    score: time,
+  }
+  console.log(currentUserscore);
+   // get saved scores from localstorage, or if not any, set to empty array
+  var allScores = JSON.parse(localStorage.getItem("score"));
+  if ( allScores === null ) {
     // save to localstorage
-    localStorage.setItem("initials", initialsEl.value);
-    localStorage.setItem("score", finalScore);
+    var storage = [currentUserscore];
+    localStorage.setItem("score", JSON.stringify(storage));
+  }
+  else {
+    allScores.push(currentUserscore);
+    localStorage.setItem("score",JSON.stringify(allScores));
+  }
+    // format new score object for current user
+
     // redirect to next page
     window.location.replace("highscores.html");
-
-
-  };
 }
 
 function checkForEnter(event) {
   // check if event key is enter
+  initialsEl.addEventListener("keyup", function(event) {
+    // Number 13 is the "Enter" key on the keyboard
+    if (event.keyCode === 13) {
+      // Cancel the default action, if needed
+      event.preventDefault();
+      // Trigger the button element with a click
+      document.getElementById("submitBtn").click();
+    }
+  });
     // saveHighscore
-}
+    saveHighscore ();
+
+  }
 
 // user clicks button to submit initials
 submitBtn.onclick = saveHighscore;

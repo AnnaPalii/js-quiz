@@ -34,15 +34,5 @@ var questions = [
     title:"JavaScript objects can be accessed by ____",
     choices: ["objectName.propertyName", "console.log", "getElementById()", "accessObject"],
     answer: "console.log"
-  },
-  {
-    title:"JavaScript objects can be accessed by ____",
-    choices: ["objectName.propertyName", "console.log", "getElementById()", "accessObject"],
-    answer: "console.log"
-  },
-  {
-    title:"JavaScript objects can be accessed by ____",
-    choices: ["objectName.propertyName", "console.log", "getElementById()", "accessObject"],
-    answer: "console.log"
   }
 ];
