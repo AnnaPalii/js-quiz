@@ -1,11 +1,12 @@
 var highScores = document.getElementById("highscores");
 var scores = JSON.parse(localStorage.getItem("score"));
+var clearBtn = document.getElementById("clear");
 
 function printHighscores() {
   // either get scores from localstorage or set to empty array
   for ( i = 0; i < scores.length; i++) {
     var initialsTx = document.createElement("li");
-    initialsTx.textContent = scores[i].initials +" "+ scores[i].score;
+    initialsTx.textContent = scores[i].initials +"-"+ scores[i].score;
     highScores.appendChild(initialsTx);
   }
   // (optional) sort highscores by score property in descending order
@@ -18,10 +19,14 @@ function printHighscores() {
 
 function clearHighscores() {
   // (and reload)
+localStorage.clear ();
+location.reload();
 }
-
 // attache clear event to clear score button
 
-// run printhighscore when page loads
 
+
+// run printhighscore when page loads
 printHighscores ();
+
+clearBtn.onclick = clearHighscores;

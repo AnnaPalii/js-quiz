@@ -91,7 +91,8 @@ function questionClick(event) {
     // play "right" sound effect
     sfxRight.play ();
     // flash right/wrong feedback on page for half a second
-    // questions.createElement("<div>You are right</div>");
+    var feedocument.createElement("<div>You are right</div>");
+    questions.appendChild()
   }
   // move to next question
       questionsIndex ++;
@@ -121,12 +122,6 @@ function quizEnd() {
   // hide questions section
   questionsEl.setAttribute("class","hide");
 }
-
-// function clockTick() {
-//   // update time
-
-//   // check if user ran out of time
-// }
 
 function saveHighscore() {
     // make sure value wasn't empty
@@ -159,7 +154,7 @@ function saveHighscore() {
 
 function checkForEnter(event) {
   // check if event key is enter
-  initialsEl.addEventListener("keyup", function(event) {
+ 
     // Number 13 is the "Enter" key on the keyboard
     if (event.keyCode === 13) {
       // Cancel the default action, if needed
@@ -167,7 +162,6 @@ function checkForEnter(event) {
       // Trigger the button element with a click
       document.getElementById("submitBtn").click();
     }
-  });
     // saveHighscore
     saveHighscore ();
 
